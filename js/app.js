@@ -16,13 +16,14 @@ var _currentDropPiece;
 var _mouse;
 
 function init() {
-  _img = document.getElementById("image");
-  _img.addEventListener('load', onImage(_img), false);
+  _img = new Image();
+  _img.addEventListener('load', onImage, false);
+  _img.src = 'img/keitaro-logo.png';
 }
 
 function onImage(e) {
-  _pieceWidth = Math.floor(_img.width / PUZZLE_DIFFICULTY);
-  _pieceHeight = Math.floor(_img.height / PUZZLE_DIFFICULTY);
+  _pieceWidth = Math.ceil(_img.width / PUZZLE_DIFFICULTY);
+  _pieceHeight = Math.ceil(_img.height / PUZZLE_DIFFICULTY);
   _puzzleWidth = _pieceWidth * PUZZLE_DIFFICULTY;
   _puzzleHeight = _pieceHeight * PUZZLE_DIFFICULTY;
 
@@ -59,7 +60,7 @@ function createTitle(msg) {
   _stage.globalAlpha = 1;
   _stage.textAlign = "center";
   _stage.textBaseline = "middle";
-  _stage.font = "20px Arial";
+  _stage.font = "1.5vw Arial";
   _stage.fillText(msg, _puzzleWidth / 2, _puzzleHeight - 20);
 }
 
