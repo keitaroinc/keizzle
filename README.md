@@ -1,3 +1,3 @@
-# Keipuzzle
+# Keizzle
 
 Keitaro branded puzzle game
