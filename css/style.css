@@ -1,0 +1,17 @@
+body {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+}
+
+#image{
+  position: absolute;
+  z-index: -1;
+  max-width: 100%;
+  visibility: hidden;
+}
+
+#canvas{
+  position: relative;
+  z-index: 1;
+}
