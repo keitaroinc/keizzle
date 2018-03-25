@@ -1,4 +1,4 @@
-const PUZZLE_DIFFICULTY = 4;
+var PUZZLE_DIFFICULTY = 2;
 const PUZZLE_HOVER_TINT = '#009900';
 
 var _stage;
@@ -21,9 +21,22 @@ var img_loaded = false;
 var intFrameWidth;
 var intFrameHeight;
 var scaleMin;
+var levelImgs = ['img/keitaro_torta.jpg', 'img/keitaro-logo.png', 'img/mavrovo_keitaro.jpg'];
+var imgWin = 'img/keitarian_win.jpg';
+var levelId = 0;
 
+function nextLevel() {
+    console.log('hereeeeee');
+    console.log(levelId);
+    document.onmousedown = null;
+    document.onmousemove = null;
+    document.onmouseup = null;
+    PUZZLE_DIFFICULTY++;
+    img_loaded = false;
+    init(levelId);
+}
 
-function init() {
+function init(levelId) {
     canvasWidth = document.getElementById('canvas').offsetWidth;
     canvasHeight = document.getElementById('canvas').offsetHeight;
     intFrameWidth = window.innerWidth;
@@ -31,7 +44,11 @@ function init() {
 
     _img = new Image();
     _img.addEventListener('load', onImage, false);
-    _img.src = 'img/keitaro-logo.png';
+    if (typeof levelId != 'undefined') {
+        _img.src = levelImgs[levelId];
+    } else {
+        _img.src = levelImgs[0];
+    }
 }
 
 function getImageSize() {
@@ -275,16 +292,28 @@ function resetPuzzleAndCheckWin() {
         }
     }
     if (gameWin) {
-        setTimeout(gameOver, 500);
+        levelId++;
+        if (levelId > levelImgs.length) {
+            console.log('here');
+            _stage.drawImage(_img, 0, 0, _puzzleWidth, _puzzleHeight);
+            _img = new Image();
+            _img.addEventListener('load', onImage, false);
+            _img.src = imgWin;
+            //"You are Keitarian"
+        } else {
+            setTimeout(nextLevel, 500);
+            // nextLevel(levelId);
+        }
+        // setTimeout(gameOver, 500);
     }
 }
-
-function gameOver() {
-    document.onmousedown = null;
-    document.onmousemove = null;
-    document.onmouseup = null;
-    initPuzzle();
-}
+//
+// function gameOver() {
+//     document.onmousedown = null;
+//     document.onmousemove = null;
+//     document.onmouseup = null;
+//     initPuzzle();
+// }
 
 function shuffleArray(o) {
     for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
