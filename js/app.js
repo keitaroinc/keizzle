@@ -21,7 +21,7 @@ var img_loaded = false;
 var intFrameWidth;
 var intFrameHeight;
 var scaleMin;
-var levelImgs = ['img/keitaro-logo.png'];
+var levelImgs = ['img/keitaro-logo.png', 'img/mavrovo_keitaro.jpg', 'img/keitaro_torta.jpg'];
 var imgWin = 'img/keitarian_win.jpg';
 var levelId = 0;
 
