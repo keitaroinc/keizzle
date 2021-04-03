@@ -1,3 +1,11 @@
+/*
+Copyright (c) 2018 Keitaro AB
+
+Use of this source code is governed by an MIT license
+that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
 var PUZZLE_DIFFICULTY = 2;
 const PUZZLE_HOVER_TINT = '#009900';
 
@@ -322,3 +330,4 @@ function shuffleArray(o) {
     for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 }
+
